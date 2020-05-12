@@ -48,6 +48,10 @@ class MacGyver:
         """
         return self.map
 
+    def set_map(self, map_select):
+        """:returns map game of MacGyver"""
+        self.map = map_select
+
     def possible_move(self, mov, mapjson_select):
         """
         test if the movemennt is possible and return true or false

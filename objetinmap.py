@@ -45,6 +45,28 @@ class ObjetInMap:
         """
         return self.position_in_sprites
 
+    @property
+    def get_map(self):
+        """
+        Returns
+        -------
+        TYPE : list of element map len(max_sprites)
+            DESCRIPTION. : return the list map of current game
+        """
+        return self.map
+
+    def set_map(self, map_select):
+        """
+        Parameters
+        ----------
+        map_select : TYPE : list of element map len(max_sprites)
+            DESCRIPTION. : set specify map list of map game
+        Returns
+        -------
+        None.
+        """
+        self.map = map_select
+
     def set_position_random(self, map_select):
         """
         This function set a random position for the object created
