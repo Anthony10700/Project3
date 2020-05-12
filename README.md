@@ -1,4 +1,4 @@
-######Project 3
+###### Project 3
 This is my project 3 of openclassrooms.
 It is a pygame game, an escape game, the goal and to gather three object on the map to then present this in front of the guardian and win the game.
 To play the games you must install the prerequisites. 
