@@ -12,8 +12,8 @@ import constant as C
 
 class ObjetInMap:
     """
-    This class make a ocject in the list of element (map_select) and this
-    caracteristique
+    This class make an object in the list of element (map_select) and this
+    characteristic
     """
 
     def __init__(self, position_in_sprites):
@@ -70,7 +70,7 @@ class ObjetInMap:
     def set_position_random(self, map_select):
         """
         This function set a random position for the object created
-        in the map where the element egal N (nothink)
+        in the map where the element egal N (nothing)
         Parameters
         ----------
         map_select : TYPE = list of element in map

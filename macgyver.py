@@ -9,7 +9,7 @@ import constant as C
 
 class MacGyver:
     """
-    class of mac gyver object, the class contain function,
+    class of macgyver object, the class contain function,
     Get position in sprite
     Test if the move is possible
     """

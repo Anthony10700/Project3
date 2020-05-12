@@ -15,7 +15,7 @@ import display as D
 def main(game_inst, display):
     """
     This is the game function,
-    it call all other function and class for play
+    it's call all other function and class for playing
     Returns
     -------
     End of function = End of game
