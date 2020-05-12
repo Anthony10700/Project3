@@ -17,7 +17,7 @@ class GamePy:
 
     def __init__(self):
         """
-         init pygame and display the windows
+         init pygame and display the window
          declaration varriable for game
         Returns
         -------
@@ -199,9 +199,9 @@ class GamePy:
 
     def look_end_of_game(self):
         """
-        look if the game is win "1" or loose "2" or nothink "0"
+        look if the game is win "1" or loose "2" or nothing "0"
 
-        Returns game is win "1" or loose "2" or nothink "0"
+        Returns game is win "1" or loose "2" or nothing "0"
 
 
         """

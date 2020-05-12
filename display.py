@@ -73,12 +73,12 @@ class Display:
         self.map_list = mapp
 
     def quit(self):
-        """:return end of game close windows"""
+        """:return end of game close window"""
         self.my_pygame.mixer.quit()
         self.my_pygame.quit()
 
     def get_constant(self):
-        """:returns all of constant in pygame.constants"""
+        """:returns all of constants in pygame.constants"""
         return self.my_pygame.constants
 
     def update_surface(self):
@@ -103,7 +103,7 @@ class Display:
         Parameters
         ----------
         msg : TYPE = string
-            DESCRIPTION. : show message in windows ex : you win !!
+            DESCRIPTION. : show message in window ex : you win !!
         Returns
         -------
         None.
