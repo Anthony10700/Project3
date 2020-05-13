@@ -9,4 +9,4 @@ To play the game you must install the prerequisites.
 * 2 Install the requirements
   ` pip3 install -r requirements.txt`
 * 3 Lunch the main file
-  ` python3 p3.py`
+  ` python3 main.py`

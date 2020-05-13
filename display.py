@@ -6,7 +6,7 @@ Created on 11 mai 2020
 
 """
 import pygame
-import constant as C
+import constant as CON
 
 
 class Display:
@@ -17,10 +17,10 @@ class Display:
         self.my_pygame.display.set_caption('P3')  # set title of windows
         self.clock = self.my_pygame.time.Clock()
         # instance of clock module pygame
-        self.windows = self.my_pygame.display.set_mode((C.NB_PIXEL_X, C.NB_PIXEL_Y))
+        self.windows = self.my_pygame.display.set_mode((CON.NB_PIXEL_X, CON.NB_PIXEL_Y))
         # set mumber pixel x and y for windows surface
-        self.windows.fill(C.BLACK)  # color all windows in black
-        self.my_pygame.mixer.music.load(C.PATH_OF_MUSIC)  # load music
+        self.windows.fill(CON.BLACK)  # color all windows in black
+        self.my_pygame.mixer.music.load(CON.PATH_OF_MUSIC)  # load music
         self.my_pygame.mixer.music.play()  # play music
         self.my_pygame.mixer.music.set_volume(0.1)  # set music in mixer at 0.1
         self.my_pygame.mixer.music.play(-1)
@@ -108,10 +108,10 @@ class Display:
         -------
         None.
         """
-        self.windows.fill(C.WHITE)  # color all windows surface in WHITE
+        self.windows.fill(CON.WHITE)  # color all windows surface in WHITE
         font = self.my_pygame.font.SysFont('arial', 40)  # set special font
-        text = font.render((msg), True, C.WHITE, C.BLACK)  # set msg
-        self.windows.blit(text, (C.NB_PIXEL_X/3, C.NB_PIXEL_Y/3))
+        text = font.render((msg), True, CON.WHITE, CON.BLACK)  # set msg
+        self.windows.blit(text, (CON.NB_PIXEL_X/3, CON.NB_PIXEL_Y/3))
         self.my_pygame.display.flip()  # Update surface on the screen
 
     def show_map_on_screen(self):
@@ -123,38 +123,38 @@ class Display:
         None.
 
         """
-        self.windows.fill(C.BLACK)
+        self.windows.fill(CON.BLACK)
 
-        nb_obj = (self.map_list.count(C.CHAR_OF_NEEDLE) + self.map_list.count(
-            C.CHAR_OF_ETHER) + self.map_list.count(C.CHAR_OF_PLASTIC_TUBE))
+        nb_obj = (self.map_list.count(CON.CHAR_OF_NEEDLE) + self.map_list.count(
+            CON.CHAR_OF_ETHER) + self.map_list.count(CON.CHAR_OF_PLASTIC_TUBE))
         # addition number of object in list self.map_list
 
         sprites = 0
-        picture_guardian = self.my_pygame.image.load(C.PATH_OF_GUARDIAN).convert_alpha()
+        picture_guardian = self.my_pygame.image.load(CON.PATH_OF_GUARDIAN).convert_alpha()
         # set picture to guardian obj
 
-        picture_macgyver = self.my_pygame.image.load(C.PATH_OF_MACGYVER).convert_alpha()
+        picture_macgyver = self.my_pygame.image.load(CON.PATH_OF_MACGYVER).convert_alpha()
 
-        picture_wall = self.my_pygame.image.load(C.PATH_OF_WALL).convert_alpha()
+        picture_wall = self.my_pygame.image.load(CON.PATH_OF_WALL).convert_alpha()
         # set picture to wall obj
 
-        picture_path = self.my_pygame.image.load(C.PATH_OF_PATH).convert_alpha()
+        picture_path = self.my_pygame.image.load(CON.PATH_OF_PATH).convert_alpha()
         # set picture to path obj
 
-        picture_needle = self.my_pygame.image.load(C.PATH_OF_NEEDLE).convert_alpha()
+        picture_needle = self.my_pygame.image.load(CON.PATH_OF_NEEDLE).convert_alpha()
         # set picture to needle obj
 
-        picture_ether = self.my_pygame.image.load(C.PATH_OF_ETHER).convert_alpha()
+        picture_ether = self.my_pygame.image.load(CON.PATH_OF_ETHER).convert_alpha()
         # set picture to ether obj
 
-        picture_plastic_tube = self.my_pygame.image.load(C.PATH_OF_PLASTIC_TUBE).convert_alpha()
+        picture_plastic_tube = self.my_pygame.image.load(CON.PATH_OF_PLASTIC_TUBE).convert_alpha()
         # set picture to plastic_tube obj
 
         font = self.my_pygame.font.SysFont('arial', 11)  # set special font
         text = font.render((' Number of objects taken: ' + str(3 - nb_obj) +
                             ' / 3' + '    Press : F7 Sound : -' +
                             '  |  F8 : + or F9 for pause F10 for play'),
-                           True, C.WHITE, C.BLACK)
+                           True, CON.WHITE, CON.BLACK)
         self.windows.blit(text, (0, 3))
         # show on specific coordinate
 
@@ -162,81 +162,82 @@ class Display:
                                        ' LVL = ' + str(self.lvl_map) +
                                        ' | Number of level win : '
                                        + str(self.nb_win_game)),
-                                      True, C.WHITE, C.BLACK)
+                                      True, CON.WHITE, CON.BLACK)
         self.windows.blit(text_number_lvl, (0, 16))
         # show on specific coordinate
 
         if nb_obj == 0:
             picture_syringe = self.my_pygame.image.load(
-                C.PATH_OF_SYRINGE).convert_alpha()
-            self.windows.blit(picture_syringe, ((C.NB_SPRITE_X-1)*C.NB_PIX_SPRITE, 0))
+                CON.PATH_OF_SYRINGE).convert_alpha()
+            self.windows.blit(picture_syringe, ((CON.NB_SPRITE_X-1)*CON.NB_PIX_SPRITE, 0))
             # show syringe if all the objects are pick up
         else:
-            if self.map_list.count(C.CHAR_OF_NEEDLE) == 0:
+            if self.map_list.count(CON.CHAR_OF_NEEDLE) == 0:
                 picture_needle = self.my_pygame.image.load(
-                    C.PATH_OF_NEEDLE).convert_alpha()
-                self.windows.blit(picture_needle, ((C.NB_SPRITE_X-1) * C.NB_PIX_SPRITE, 0))
+                    CON.PATH_OF_NEEDLE).convert_alpha()
+                self.windows.blit(picture_needle, ((CON.NB_SPRITE_X-1) * CON.NB_PIX_SPRITE, 0))
                 # display if the object has been picked up
-            if self.map_list.count(C.CHAR_OF_ETHER) == 0:
-                picture_ether = self.my_pygame.image.load(C.PATH_OF_ETHER).convert_alpha()
-                self.windows.blit(picture_ether, ((C.NB_SPRITE_X-2) * C.NB_PIX_SPRITE, 0))
+            if self.map_list.count(CON.CHAR_OF_ETHER) == 0:
+                picture_ether = self.my_pygame.image.load(CON.PATH_OF_ETHER).convert_alpha()
+                self.windows.blit(picture_ether, ((CON.NB_SPRITE_X-2) * CON.NB_PIX_SPRITE, 0))
                 # display if the object has been picked up
-            if self.map_list.count(C.CHAR_OF_PLASTIC_TUBE) == 0:
-                picture_plastic_tube = self.my_pygame.image.load(C.PATH_OF_PLASTIC_TUBE
+            if self.map_list.count(CON.CHAR_OF_PLASTIC_TUBE) == 0:
+                picture_plastic_tube = self.my_pygame.image.load(CON.PATH_OF_PLASTIC_TUBE
                                                                 ).convert_alpha()
-                self.windows.blit(picture_plastic_tube, ((C.NB_SPRITE_X-3) * C.NB_PIX_SPRITE, 0))
+                self.windows.blit(picture_plastic_tube, ((CON.NB_SPRITE_X-3) *
+                                                         CON.NB_PIX_SPRITE, 0))
                 # display if the object has been picked up
 
         for itm in self.map_list:
             if itm == "M":  # picture_MacGyver
-                self.windows.blit(picture_macgyver, (sprites % (C.NB_SPRITE_X)
-                                                     * C.NB_PIX_SPRITE,
+                self.windows.blit(picture_macgyver, (sprites % (CON.NB_SPRITE_X)
+                                                     * CON.NB_PIX_SPRITE,
                                                      int(sprites /
-                                                         C.NB_SPRITE_Y+1) *
-                                                     C.NB_PIX_SPRITE))
+                                                         CON.NB_SPRITE_Y+1) *
+                                                     CON.NB_PIX_SPRITE))
                 # show picture_macgyver on specific coordinate
 
             elif itm == "W":  # picture_wall
-                self.windows.blit(picture_wall, (sprites % C.NB_SPRITE_X *
-                                                 C.NB_PIX_SPRITE,
-                                                 int(sprites/C.NB_SPRITE_Y+1) *
-                                                 C.NB_PIX_SPRITE))
+                self.windows.blit(picture_wall, (sprites % CON.NB_SPRITE_X *
+                                                 CON.NB_PIX_SPRITE,
+                                                 int(sprites/CON.NB_SPRITE_Y+1) *
+                                                 CON.NB_PIX_SPRITE))
                 # show picture_wall on specific coordinate
 
             elif itm == "G":  # picture_Guardian
-                self.windows.blit(picture_guardian, (sprites % C.NB_SPRITE_X *
-                                                     C.NB_PIX_SPRITE,
+                self.windows.blit(picture_guardian, (sprites % CON.NB_SPRITE_X *
+                                                     CON.NB_PIX_SPRITE,
                                                      int(sprites /
-                                                         C.NB_SPRITE_Y+1) *
-                                                     C.NB_PIX_SPRITE))
+                                                         CON.NB_SPRITE_Y+1) *
+                                                     CON.NB_PIX_SPRITE))
                 # show picture_guardian on specific coordinate
             elif itm == "N":  # picture_path
-                self.windows.blit(picture_path, (sprites % C.NB_SPRITE_X *
-                                                 C.NB_PIX_SPRITE,
-                                                 int(sprites/C.NB_SPRITE_Y+1) *
-                                                 C.NB_PIX_SPRITE))
+                self.windows.blit(picture_path, (sprites % CON.NB_SPRITE_X *
+                                                 CON.NB_PIX_SPRITE,
+                                                 int(sprites/CON.NB_SPRITE_Y+1) *
+                                                 CON.NB_PIX_SPRITE))
                 # show picture_path on specific coordinate
-            elif itm == C.CHAR_OF_NEEDLE:  # picture_needle
-                self.windows.blit(picture_needle, (sprites % C.NB_SPRITE_X *
-                                                   C.NB_PIX_SPRITE,
+            elif itm == CON.CHAR_OF_NEEDLE:  # picture_needle
+                self.windows.blit(picture_needle, (sprites % CON.NB_SPRITE_X *
+                                                   CON.NB_PIX_SPRITE,
                                                    int(sprites /
-                                                       C.NB_SPRITE_Y+1) *
-                                                   C.NB_PIX_SPRITE))
+                                                       CON.NB_SPRITE_Y+1) *
+                                                   CON.NB_PIX_SPRITE))
                 # show picture_needle on specific coordinate
-            elif itm == C.CHAR_OF_ETHER:  # picture_ether
-                self.windows.blit(picture_ether, (sprites % C.NB_SPRITE_X *
-                                                  C.NB_PIX_SPRITE,
+            elif itm == CON.CHAR_OF_ETHER:  # picture_ether
+                self.windows.blit(picture_ether, (sprites % CON.NB_SPRITE_X *
+                                                  CON.NB_PIX_SPRITE,
                                                   int(sprites /
-                                                      C.NB_SPRITE_Y+1) *
-                                                  C.NB_PIX_SPRITE))
+                                                      CON.NB_SPRITE_Y+1) *
+                                                  CON.NB_PIX_SPRITE))
                 # show picture_ether on specific coordinate
-            elif itm == C.CHAR_OF_PLASTIC_TUBE:  # picture_plastic_tube
+            elif itm == CON.CHAR_OF_PLASTIC_TUBE:  # picture_plastic_tube
                 self.windows.blit(picture_plastic_tube, (sprites %
-                                                         C.NB_SPRITE_X *
-                                                         C.NB_PIX_SPRITE,
+                                                         CON.NB_SPRITE_X *
+                                                         CON.NB_PIX_SPRITE,
                                                          int(sprites /
-                                                             C.NB_SPRITE_Y+1) *
-                                                         C.NB_PIX_SPRITE))
+                                                             CON.NB_SPRITE_Y+1) *
+                                                         CON.NB_PIX_SPRITE))
                 # show picture_plastic_tube on specific coordinate
             sprites += 1
 
