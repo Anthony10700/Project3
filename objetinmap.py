@@ -4,10 +4,9 @@
 Created on 27 avr 2020
 @author: anthony thillerot
 """
-from random import randint
-from random import seed
+from random import randint, seed
 from time import time
-import constant as C
+import constant as CON
 
 
 class ObjetInMap:
@@ -29,8 +28,8 @@ class ObjetInMap:
         None.
 
         """
-        self.number_of_sprite_x = C.NB_SPRITE_X
-        self.number_of_sprite_y = C.NB_SPRITE_Y
+        self.number_of_sprite_x = CON.NB_SPRITE_X
+        self.number_of_sprite_y = CON.NB_SPRITE_Y
         self.max_sprites = self.number_of_sprite_x * self.number_of_sprite_y
         assert 1 <= position_in_sprites <= self.max_sprites
         self.position_in_sprites = position_in_sprites

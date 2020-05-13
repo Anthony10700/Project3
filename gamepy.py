@@ -8,7 +8,7 @@ from random import randint
 from random import seed
 from time import time
 import json
-import constant as C
+import constant as CON
 
 class GamePy:
     """
@@ -122,8 +122,8 @@ class GamePy:
 
         """
         self.id_map = self.id_map + 1
-        self.lvl_map = 1 + int((C.NB_SPRITE_X - 15) / 5)
-        map_create = [""]*C.NB_MAX_SPRITE
+        self.lvl_map = 1 + int((CON.NB_SPRITE_X - 15) / 5)
+        map_create = [""]*CON.NB_MAX_SPRITE
         map_create[0] = ('M')  # Macgyver on first sprite
         seed(time()+7)
         for i in range(1, 4):
@@ -131,56 +131,56 @@ class GamePy:
 
         past_v = 3
         var_v = 3
-        while var_v <= C.NB_MAX_SPRITE - 2:  # create random path to Guardian
+        while var_v <= CON.NB_MAX_SPRITE - 2:  # create random path to Guardian
             nbr_rnd = randint(1, 4)
             past_v = var_v
             if map_create[var_v] != 'M' and map_create[var_v] != 'G':
 
-                if nbr_rnd == 1 and var_v % C.NB_SPRITE_X < (C.NB_SPRITE_X-1):
-                    if var_v + 1 < C.NB_MAX_SPRITE:
+                if nbr_rnd == 1 and var_v % CON.NB_SPRITE_X < (CON.NB_SPRITE_X-1):
+                    if var_v + 1 < CON.NB_MAX_SPRITE:
                         map_create[var_v+1] = 'N'
                         var_v = var_v + 1
-                elif nbr_rnd == 3 and var_v % C.NB_SPRITE_X > 0:
+                elif nbr_rnd == 3 and var_v % CON.NB_SPRITE_X > 0:
                     if var_v - 1 > 1:
                         map_create[var_v-1] = 'N'
                         var_v = var_v - 1
-                # elif var_v-C.NB_SPRITE_X > 1 and nbr_rnd == 40:
-                #     map_create[var_v-C.NB_SPRITE_X] = 'N'
-                #     var_v = var_v - C.NB_SPRITE_X
-                elif var_v+C.NB_SPRITE_X < C.NB_MAX_SPRITE and nbr_rnd == 2:
-                    map_create[var_v+C.NB_SPRITE_X] = 'N'
-                    var_v = var_v + C.NB_SPRITE_X
+                # elif var_v-CON.NB_SPRITE_X > 1 and nbr_rnd == 40:
+                #     map_create[var_v-CON.NB_SPRITE_X] = 'N'
+                #     var_v = var_v - CON.NB_SPRITE_X
+                elif var_v+CON.NB_SPRITE_X < CON.NB_MAX_SPRITE and nbr_rnd == 2:
+                    map_create[var_v+CON.NB_SPRITE_X] = 'N'
+                    var_v = var_v + CON.NB_SPRITE_X
                 else:
                     var_v = past_v
             else:
                 var_v = var_v + 1
 
-        for nb_branch in range(5, C.NB_SPRITE_X, 5):
+        for nb_branch in range(5, CON.NB_SPRITE_X, 5):
             # create branch random in the path to guardian
 
-            for var_n in range(nb_branch * C.NB_SPRITE_X, C.NB_MAX_SPRITE, 1):
+            for var_n in range(nb_branch * CON.NB_SPRITE_X, CON.NB_MAX_SPRITE, 1):
                 if map_create[var_n] == 'N':
                     var_v = var_n
                     whi_var = 0
-                    while whi_var < C.NB_RD_IN_BRANCH:
+                    while whi_var < CON.NB_RD_IN_BRANCH:
                         whi_var += 1
                         nbr_rnd = randint(1, 4)
                         past_v = var_v
                         if map_create[var_v] != 'M' and map_create[var_v] != 'G':
-                            mod_var = var_v % C.NB_SPRITE_X
-                            v_nb_s = var_v + C.NB_SPRITE_X
-                            if nbr_rnd == 1 and mod_var < (C.NB_SPRITE_X-1):
-                                if var_v + 1 < C.NB_MAX_SPRITE:
+                            mod_var = var_v % CON.NB_SPRITE_X
+                            v_nb_s = var_v + CON.NB_SPRITE_X
+                            if nbr_rnd == 1 and mod_var < (CON.NB_SPRITE_X-1):
+                                if var_v + 1 < CON.NB_MAX_SPRITE:
                                     map_create[var_v+1] = 'N'
                                     var_v = var_v + 1
                             elif nbr_rnd == 3 and mod_var > 0:
                                 if var_v - 1 > 1:
                                     map_create[var_v-1] = 'N'
                                     var_v = var_v - 1
-                            elif var_v-C.NB_SPRITE_X > 1 and nbr_rnd == 40:
-                                map_create[var_v-C.NB_SPRITE_X] = 'N'
-                                var_v = var_v - C.NB_SPRITE_X
-                            elif v_nb_s < C.NB_MAX_SPRITE and nbr_rnd == 2:
+                            elif var_v-CON.NB_SPRITE_X > 1 and nbr_rnd == 40:
+                                map_create[var_v-CON.NB_SPRITE_X] = 'N'
+                                var_v = var_v - CON.NB_SPRITE_X
+                            elif v_nb_s < CON.NB_MAX_SPRITE and nbr_rnd == 2:
                                 map_create[v_nb_s] = 'N'
                                 var_v = v_nb_s
                             else:
@@ -189,12 +189,12 @@ class GamePy:
                             var_v = var_v + 1
                     break
 
-        for var_a in range(0, C.NB_MAX_SPRITE-1):
+        for var_a in range(0, CON.NB_MAX_SPRITE-1):
             # set all wall in the nothink value
             if map_create[var_a] == '':
                 map_create[var_a] = ('W')
 
-        map_create[C.NB_MAX_SPRITE-1] = ('G')  # Guardian on last sprite
+        map_create[CON.NB_MAX_SPRITE-1] = ('G')  # Guardian on last sprite
         self.map = map_create
 
     def look_end_of_game(self):
@@ -205,13 +205,13 @@ class GamePy:
 
 
         """
-        nb_obj = (self.map.count(C.CHAR_OF_NEEDLE) +
-                  self.map.count(C.CHAR_OF_ETHER) +
-                  self.map.count(C.CHAR_OF_PLASTIC_TUBE))
+        nb_obj = (self.map.count(CON.CHAR_OF_NEEDLE) +
+                  self.map.count(CON.CHAR_OF_ETHER) +
+                  self.map.count(CON.CHAR_OF_PLASTIC_TUBE))
     # addition number of object in list map
 
         if 'G' not in self.map:
             if nb_obj > 0:
-                return 2
-            return 1
-        return 0
+                return CON.CONSTANT_LOSE
+            return CON.CONSTANT_WIN
+        return CON.CONSTANT_CONTINUE
