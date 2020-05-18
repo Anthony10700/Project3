@@ -81,10 +81,12 @@ class ObjetInMap:
             DESCRIPTION.
 
         """
-        seed(time()+self.position_in_sprites)
+        seed(time()+self.position_in_sprites)  # initialize the random number generator.
         number_rnd = randint(4, int(map_select.count('N')))
-        # print(number_rnd)
+        # Return a random integer in range 4 to map_select.count('N')
+
         assert 1 <= number_rnd <= self.max_sprites
+        # return error if the random number is not in the range
         nb_n_in_map = 0
 
         for i in range(0, len(map_select) - 1):
